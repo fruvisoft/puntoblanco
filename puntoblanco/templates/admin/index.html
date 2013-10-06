@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+  .fruvi-subtitle
+  {
+    text-transform: uppercase;
+  }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <h1> {{ name }} </h1>
+  <h4 class="fruvi-subtitle"> {{ subtitle }} </h4>
+  
+  <p class="important">
+    Módulo de administración
+  </p>
+  
+{% endblock %}  
