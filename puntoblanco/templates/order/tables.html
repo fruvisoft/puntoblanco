@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% set order_active='active' %}
+
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+  .fruvi-table
+  {
+    height: 150px;
+    width: 180px;
+    float: left;
+    margin: 18px;
+    font-size: 25px;
+    line-height: 60px;
+  }
+  
+  .fruvi-plate
+  {
+    height: 100px;
+    width: 100px;
+    float: left;
+    margin: 10px;
+  }
+  
+  .fruvi-table-number
+  {
+    font-size: 70px;
+  }
+  
+  .modal-dialog
+  {
+    width: 70%;
+  }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <div class="container" id="fruvi-tables-container">
+    {% for table in tables %}
+      <button type="button" class="btn btn-default fruvi-table" data-table-id="{{ table['id'] }}">
+        Mesa </br>
+        <span class="fruvi-table-number"> {{ table['id'] }} </span>
+      </button>
+    {% endfor %}
+    
+    <button type="button" class="btn btn-default fruvi-table" data-table-id="1">
+      Mesa </br>
+      <span class="fruvi-table-number"> α </span>
+    </button>
+    
+    <button type="button" class="btn btn-default fruvi-table" data-table-id="2">
+      Mesa </br>
+      <span class="fruvi-table-number"> 2 </span>
+    </button>
+    
+    <button type="button" class="btn btn-default fruvi-table" data-table-id="3">
+      Mesa </br>
+      <span class="fruvi-table-number"> C </span>
+    </button>
+
+    <button type="button" class="btn btn-danger fruvi-table" data-table-id="4">
+      Mesa </br>
+      <span class="fruvi-table-number"> D </span>
+    </button>
+    
+    <button type="button" class="btn btn-default fruvi-table" data-table-id="5">
+      Mesa </br>
+      <span class="fruvi-table-number"> V </span>
+    </button>
+    
+    <button type="button" class="btn btn-success fruvi-table" data-table-id="6">
+      Mesa </br>
+      <span class="fruvi-table-number"> 6 </span>
+    </button>
+    
+    <button type="button" class="btn btn-default fruvi-table" data-table-id="7">
+      Mesa </br>
+      <span class="fruvi-table-number"> VII </span>
+    </button>
+    
+    <button type="button" class="btn btn-default fruvi-table" data-table-id="8">
+      Mesa </br>
+      <span class="fruvi-table-number"> 8 </span>
+    </button>
+    
+    <button type="button" class="btn btn-default fruvi-table" disabled="disabled" data-table-id="9">
+      Mesa </br>
+      <span class="fruvi-table-number"> 9 </span>
+    </button>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  
+  <script src="/static/js/tables.js"></script>
+{% endblock %}
+
+{% block body %}
+  {{ super() }}
+  
+  <div class="modal fade" id="table-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="table-modal-title"></h4>
+        </div>
+        
+        <div class="modal-body" id="table-modal-content">
+        
+        
+          <div class="row">
+            <div class="col-md-7" id="fruvi-plates-container">
+              <span>Aquí vienen los platos</span>
+            </div>
+            <div class="col-md-5" id="fruvi-order-container">
+            </div>
+          </div>
+          
+          
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary" id="table-modal-ok-button">Aceptar</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+{% endblock %}
