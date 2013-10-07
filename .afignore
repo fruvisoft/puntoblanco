@@ -1,5 +1,8 @@
-*.py[cod]
+*.pyc
+*.pyo
+*.pyd
+
 .gitignore
-.idea
+.idea/
 .git
 README.md
