@@ -83,7 +83,7 @@
         return $tables;
     }
     
-    function get_order($table)
+    function get_comanda($table)
     {
         $connection = get_connection();
         
@@ -108,6 +108,20 @@
         $comanda = mysql_fetch_assoc($result);
         
         mysql_free_result($result);
+        
+        mysql_close($connection);
+        
+        return $comanda;
+    }
+    
+    function get_order($table)
+    {
+        $comanda = get_comanda($table);
+        
+        if (!$comanda)
+            return false;
+        
+        $connection = get_connection();
         
         $query = sprintf("SELECT NomPro, Cant, PrecioPro
             FROM `detallecomanda`
