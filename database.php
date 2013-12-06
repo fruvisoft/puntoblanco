@@ -199,6 +199,31 @@
         return $plates;
     }
     
+    function create_comanda($table)
+    {
+        $connection = get_connection();
+        
+        $query = sprintf("INSERT INTO comanda (NumCom, CodPer, NumMesa)
+            VALUES (NULL, %s, %s)",
+            mysql_real_escape_string($_SESSION['user']),
+            mysql_real_escape_string($table));
+            
+        $result = mysql_query($query);
+        
+        if (!$result)
+        {
+            $message  = 'Invalid query: ' . mysql_error() . "\n";
+            $message .= 'Whole query: ' . $query;
+            die($message);
+        }
+        
+        mysql_free_result($result);
+        
+        mysql_close($connection);
+        
+        return get_comanda($table);
+    }
+       
     function add_order($table, $order)
     {
         // TO DO
