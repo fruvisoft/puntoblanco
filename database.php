@@ -226,5 +226,45 @@
        
     function add_order($table, $order)
     {
-        // TO DO
+        $comanda = get_comanda($table);
+        
+        if (!$comanda)
+            $comanda = create_comanda($table);
+            
+        if (!$comanda)
+            return false;
+    
+        $connection = get_connection();
+        
+        foreach ($order as $plate => $cant)
+        {
+            $query = "";
+            
+            if ($cant <= 0) continue;
+            
+            // Cambiar a INSERT INTO table (a,b,c) VALUES (1,2,3)
+            // ON DUPLICATE KEY UPDATE c=c+1;
+            
+            $query = sprintf("INSERT INTO detallecomanda (NumCom, CodPro, Cant)
+                VALUES (%s, %s, %s)
+                ON DUPLICATE KEY UPDATE Cant = Cant + %s",
+                mysql_real_escape_string($comanda['NumCom']),
+                mysql_real_escape_string($plate),
+                mysql_real_escape_string($cant),
+                mysql_real_escape_string($cant));
+            
+
+            $result = mysql_query($query);
+            
+            if (!$result)
+            {
+                $message  = 'Invalid query: ' . mysql_error() . "\n";
+                $message .= 'Whole query: ' . $query;
+                die($message);
+            }
+            
+            mysql_free_result($result);
+        }
+        
+        mysql_close($connection);
     }
