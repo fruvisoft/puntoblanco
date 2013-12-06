@@ -1,0 +1,41 @@
+body
+{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #eee;
+}
+
+.fruvi-table
+{
+  height: 100px;
+  width: 120px;
+  float: left;
+  margin: 12px;
+  font-size: 20px;
+  line-height: 40px;
+}
+ 
+.fruvi-table-number
+{
+  font-size: 40px;
+}
+
+.fuvi-table-C
+{
+  background-color: #e07c70;
+}
+
+.fruvi-table-A
+{
+  background-color: #ffffff;
+}
+
+.fuvi-table-C
+{
+  background-color: #e07c70;
+}
+
+.fruvi-table-R
+{
+  background-color: #7c90e0;
+}
