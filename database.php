@@ -8,7 +8,7 @@
         $port = '3306';
         $db = "puntoblanco";
     
-        if (getenv("VCAP_SERVICES"))
+        if (getenv("VCAP_SERVICES")) // APPFOG
         {
             $services_json = json_decode(getenv("VCAP_SERVICES"),true);
             $mysql_config = $services_json["mysql-5.1"][0]["credentials"];
