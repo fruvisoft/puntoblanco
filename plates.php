@@ -109,6 +109,7 @@
     
     <a type="button" class="btn btn-default" href="order.php?table=<?php echo $table; ?>">Regresar</a>
     <form action="send_order.php" method="post">
+        <input type="hidden" name="table" value="<?php echo $table; ?>">
         <input type="submit" class="btn btn-primary" href="#" value="Enviar">
     </form>
 
@@ -117,7 +118,7 @@
     <div id="second" class="container">
         <div id="image">
         </div>
-        <button id="to-main" type="button" class="btn btn-default">Regresar</a>
+        <button id="to-main" type="button" class="btn btn-default">Regresar</button>
     </div>
 
 
